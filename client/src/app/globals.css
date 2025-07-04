@@ -1,0 +1,76 @@
+/* Your main CSS file (e.g., src/app.css or src/globals.css) */
+
+@import "tailwindcss";
+
+/* Base styles for your application */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.app {
+  height: 100%;
+  width: 100%;
+  /* Apply your base text and background colors using var() */
+  /* These will be the light mode defaults from @theme or global overrides */
+  @apply text-sm bg-white dark:bg-black; /* Define --color-gray-900 in @theme */
+}
+
+/* Define the 'dark' custom variant for class-based dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Define your light mode theme variables */
+@theme {
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-500: #6b7280;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827; /* Added default for gray-900 */
+
+  --color-blue-200: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+
+  /*
+    Do NOT nest @layer theme inside @theme.
+    It should be at the top level of your CSS file.
+  */
+}
+
+/* Correct placement for @layer theme to override variables for dark mode */
+@layer theme {
+  .dark {
+    /* These variables will override the ones in @theme when the 'dark' class is present */
+    --color-gray-500: #101214; /* Overrides default gray-500 for dark mode background */
+    --color-gray-900: #ffffff; /* Overrides default gray-900 for dark mode text */
+    --color-gray-100: #1d1f21; /* Example: A darker gray-100 for dark mode */
+
+    --color-blue-500: #0275ff; /* Overrides default blue-500 for dark mode */
+
+    /* Custom dark mode specific variables if you need them */
+    --stroke-dark: #2d3135;
+  }
+}
+
+/*
+  How to use the custom variables in your HTML/JSX:
+
+  <div class="bg-color-gray-500 text-color-gray-900">
+    This element's background and text will change with dark mode.
+  </div>
+
+  Or if you want to use the default Tailwind utilities for colors, they will
+  automatically pick up your overridden values from @theme and @layer theme.
+
+  <div class="bg-gray-500 text-gray-900">
+    This uses the utility classes and will reflect your custom color values.
+  </div>
+
+  Remember to have JavaScript toggle the 'dark' class on your <html> element.
+*/
