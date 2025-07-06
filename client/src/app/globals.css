@@ -20,6 +20,8 @@ body,
   @apply text-sm bg-white dark:bg-black; /* Define --color-gray-900 in @theme */
 }
 
+
+
 /* Define the 'dark' custom variant for class-based dark mode */
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -36,7 +38,7 @@ body,
   --color-blue-200: #93c5fd;
   --color-blue-400: #60a5fa;
   --color-blue-500: #3b82f6;
-
+    
   /*
     Do NOT nest @layer theme inside @theme.
     It should be at the top level of your CSS file.
@@ -55,8 +57,15 @@ body,
 
     /* Custom dark mode specific variables if you need them */
     --stroke-dark: #2d3135;
+    --dark-bg: #101214;
+    --dark-secondary: #1d1f21;
+    --dark-tertiary: #3b3d40;
+    --blue-primary: #0275ff;
+    --stroke-dark: #2d3135;
   }
 }
+
+
 
 /*
   How to use the custom variables in your HTML/JSX:

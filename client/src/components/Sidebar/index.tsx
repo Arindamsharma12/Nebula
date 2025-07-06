@@ -1,6 +1,7 @@
 "use client";
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 import { setIsSidebarCollapsed } from "@/state";
+import { useGetProjectsQuery } from "@/state/api";
 import {
   AlertCircle,
   AlertOctagon,
@@ -27,6 +28,8 @@ import React, { useState } from "react";
 const Sidebar = () => {
   const [showProjects, setShowProjects] = useState(true);
   const [showPriority, setShowPriority] = useState(true);
+
+  const { data: projects } = useGetProjectsQuery();
   const dispatch = useAppDispatch();
   const isSidebarCollapsed = useAppSelector(
     (state) => state.global.isSidebarCollapsed,
@@ -90,7 +93,15 @@ const Sidebar = () => {
           )}
         </button>
         {/* PROJECTS LIST */}
-
+        {showProjects &&
+          projects?.map((project) => (
+            <SidebarLink
+              key={project.id}
+              icon={Briefcase}
+              label={project.name}
+              href={`/projects/${project.id}`}
+            />
+          ))}
         {/* PRIORITIES LINKS */}
         <button
           onClick={() => setShowPriority((prev) => !prev)}
@@ -150,7 +161,7 @@ const SidebarLink = ({ href, icon: Icon, label }: SidebarLinkProps) => {
         className={`relative flex cursor-pointer items-center gap-3 transition-colors hover:bg-gray-100 dark:bg-black dark:hover:bg-gray-700 ${isActive ? "bg-gray-100 text-white dark:bg-gray-600" : ""} justify-start px-8 py-3`}
       >
         {isActive && (
-          <div className="absolute left-0 top-0 h-[100%] w-[5px] bg-blue-200" />
+          <div className="absolute top-0 left-0 h-[100%] w-[5px] bg-blue-200" />
         )}
         <Icon className="h-6 w-6 text-gray-800 dark:text-white" />
         <span className={`font-medium text-gray-800 dark:text-white`}>
