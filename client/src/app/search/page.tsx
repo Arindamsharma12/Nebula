@@ -36,7 +36,7 @@ const Search = () => {
         <input
           type="text"
           placeholder="Search..."
-          className="w-1/2 rounded border p-3 shadow"
+          className="w-full rounded border p-3 shadow md:w-1/2 lg:w-1/2"
           onChange={handleSearch}
         />
       </div>
@@ -46,21 +46,21 @@ const Search = () => {
         {!isLoading && !isError && searchResults && (
           <div>
             {searchResults.tasks && searchResults.tasks?.length > 0 && (
-              <h2>Tasks</h2>
+              <h2 className="my-4 text-2xl">Tasks</h2>
             )}
             {searchResults.tasks?.map((task) => (
               <TaskCard key={task.id} task={task} />
             ))}
 
             {searchResults.projects && searchResults.projects?.length > 0 && (
-              <h2>Projects</h2>
+              <h2 className="my-4 text-2xl">Projects</h2>
             )}
             {searchResults.projects?.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
 
             {searchResults.users && searchResults.users?.length > 0 && (
-              <h2>Users</h2>
+              <h2 className="my-4 text-2xl">Users</h2>
             )}
             {searchResults.users?.map((user) => (
               <UserCard key={user.userId} user={user} />

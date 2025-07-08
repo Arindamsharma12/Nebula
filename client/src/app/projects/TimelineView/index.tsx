@@ -48,7 +48,7 @@ const Timeline = ({ id, setIsModalNewTaskOpen }: Props) => {
   };
 
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>An error occured while fetching task.</div>;
+  if (error || !tasks) return <div>An error occured while fetching task.</div>;
 
   return (
     <div className="px-4 xl:px-6">
@@ -74,7 +74,7 @@ const Timeline = ({ id, setIsModalNewTaskOpen }: Props) => {
             tasks={ganttTasks}
             {...displayOptions}
             columnWidth={displayOptions.viewMode === ViewMode.Month ? 150 : 100}
-            listCellWidth="100px"
+            listCellWidth={"100px"}
             barBackgroundColor={isDarkMode ? "#101214" : "#aeb8c2"}
             barBackgroundSelectedColor={isDarkMode ? "#000" : "#9ba1a6"}
           />

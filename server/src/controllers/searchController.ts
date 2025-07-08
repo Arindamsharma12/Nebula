@@ -18,7 +18,7 @@ export const search = async(
             }
         })
 
-        const project = await prisma.project.findMany({
+        const projects = await prisma.project.findMany({
             where:{
                 OR:[
                     {name:{contains:query as string}},
@@ -34,7 +34,7 @@ export const search = async(
                 ]
             }
         })
-         res.json({tasks,project,users})
+         res.json({tasks,projects,users})
     }catch(error:any){
         res.status(500).json({message:`Error performing search: ${error.message}`})
 

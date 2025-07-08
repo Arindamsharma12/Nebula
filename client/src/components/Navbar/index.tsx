@@ -22,7 +22,7 @@ const Navbar = () => {
           </button>
         )}
         <div className="relative flex h-min w-[200px]">
-          <Search className="absolute left-[4px] top-1/2 mr-2 h-5 w-5 -translate-y-1/2 transform cursor-pointer dark:text-white" />
+          <Search className="absolute top-1/2 left-[4px] mr-2 h-5 w-5 -translate-y-1/2 transform cursor-pointer dark:text-white" />
           <input
             type="search"
             placeholder="Search..."
@@ -55,7 +55,7 @@ const Navbar = () => {
         >
           <Settings className="h-6 w-6 cursor-pointer dark:text-white" />
         </Link>
-        <div className="ml-2 mr-5 hidden min-h-[2em] w-[0.1rem] bg-gray-200 md:inline-block"></div>
+        <div className="mr-5 ml-2 hidden min-h-[2em] w-[0.1rem] bg-gray-200 md:inline-block"></div>
       </div>
     </div>
   );
